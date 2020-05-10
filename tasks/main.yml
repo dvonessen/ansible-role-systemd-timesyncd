@@ -12,7 +12,8 @@
   tags:
     - systemd_timesyncd_all
     - systemd_timesyncd_install
-    - systemd_timesyncd_configure
+    - systemd_timesyncd_timezone
+    - systemd_timesyncd_systemd_timesyncd
 
 - name: import install.yml
   import_tasks: install.yml
