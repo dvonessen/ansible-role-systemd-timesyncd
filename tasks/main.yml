@@ -15,6 +15,13 @@
     - systemd_timesyncd_timezone
     - systemd_timesyncd_systemd_timesyncd
 
+- name: import preflight.yml
+  import_tasks: preflight.yml
+  become: true
+  tags:
+    - systemd_timesyncd_all
+    - systemd_timesyncd_timezone
+
 - name: import install.yml
   import_tasks: install.yml
   become: true

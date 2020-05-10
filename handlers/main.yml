@@ -1,6 +1,13 @@
 ---
-- name: reload systemd-timesyncd
+- name: restart systemd-timesyncd
   systemd:
     name: systemd-timesyncd.service
     state: restarted
   become: true
+
+- name: restart crond
+  systemd:
+    name: crond.service
+    state: restarted
+  when:
+    - '"crond.service" in ansible_facts.services'
