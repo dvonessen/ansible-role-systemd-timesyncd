@@ -1,0 +1,6 @@
+---
+- name: reload systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    state: restarted
+  become: true

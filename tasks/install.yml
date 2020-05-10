@@ -1,0 +1,8 @@
+---
+- name: install packages
+  package:
+    name: "{{ systemd_timesyncd_packages }}"
+    state: present
+
+- name: remove unused ntp packages
+  package: "{{ systemd_timesyncd_remove_packages }}"

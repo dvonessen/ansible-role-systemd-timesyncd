@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Daniel von Essen
+  description: This role configures systemd-timesyncd (man 5 systemd-timesyncd)
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: CentOS
+      versions:
+       - 8
+    - name: Debian
+      versions:
+        - 10
+    - name: Ubuntu
+      versions:
+        - 20.04
+
+  galaxy_tags: [ntp, chrony, system, timesync, network, time]
+
+dependencies: []

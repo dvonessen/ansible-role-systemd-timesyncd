@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: all
+  remote_user: ansible
+  tasks:
+    - name: override ConditionVirtualization in systemd
+      block:
+        - name: create override direcotry for systemd-timesyncd
+          file:
+            path: /etc/systemd/system/systemd-timesyncd.service.d
+            state: directory
+            owner: root
+            group: root
+            mode: 0755
+        - name: override systemd-timesyncd.service condition
+          copy:
+            content: |
+              [Unit]
+              ConditionVirtualization=
+            dest: /etc/systemd/system/systemd-timesyncd.service.d/override.conf
+            owner: root
+            group: root
+            mode: 0644
+        - name: reload systemd
+          systemd:
+              daemon_reload: yes
+      become: true

@@ -1,0 +1,36 @@
+---
+- name: include os dependent variables
+  include_vars: "{{ lookup('first_found', search) }}"
+  vars:
+    search:
+      files:
+        - "{{ ansible_distribution | lower }}{{ ansible_distribution_version }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - vars
+  tags:
+    - systemd_timesyncd_all
+    - systemd_timesyncd_install
+    - systemd_timesyncd_configure
+
+- name: import install.yml
+  import_tasks: install.yml
+  become: true
+  tags:
+    - systemd_timesyncd_all
+    - systemd_timesyncd_install
+
+- name: import timezone.yml
+  import_tasks: timezone.yml
+  become: true
+  tags:
+    - systemd_timesyncd_all
+    - systemd_timesyncd_timezone
+
+- name: import systemd_timesyncd.yml
+  import_tasks: systemd_timesyncd.yml
+  become: true
+  tags:
+    - systemd_timesyncd_all
+    - systemd_timesyncd_systemd_timesyncd

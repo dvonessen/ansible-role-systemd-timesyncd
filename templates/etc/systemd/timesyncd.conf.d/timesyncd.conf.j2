@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+# See timesyncd.conf(5) for details.
+
+[Time]
+NTP={{ " ".join(systemd_timesyncd_ntp_servers) }}
+{% if systemd_timesyncd_fallback_ntp_servers | length > 0 -%}
+FallbackNTP={{ " ".join(systemd_timesyncd_fallback_ntp_servers) }}
+{% else -%}
+#FallbackNTP=
+{% endif -%}
+RootDistanceMaxSec={{ systemd_timesyncd_root_distance_max }}
+PollIntervalMinSec={{ systemd_timesyncd_poll_interval_min }}
+PollIntervalMaxSec={{ systemd_timesyncd_poll_interval_max }}

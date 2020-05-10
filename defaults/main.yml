@@ -1,0 +1,13 @@
+---
+systemd_timesyncd_timezone: Etc/UTC
+
+systemd_timesyncd_ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+  - 2.pool.ntp.org
+  - 3.pool.ntp.org
+
+systemd_timesyncd_fallback_ntp_servers: []
+systemd_timesyncd_root_distance_max: 5
+systemd_timesyncd_poll_interval_min: 32
+systemd_timesyncd_poll_interval_max: 2048

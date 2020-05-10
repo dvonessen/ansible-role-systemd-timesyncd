@@ -1,0 +1,17 @@
+---
+- name: set timezone
+  timezone:
+    name: "{{ systemd_timesyncd_timezone }}"
+  register: __systemd_timesyncd_timezone_res
+
+- name: get system services
+  service_facts:
+  when: __systemd_timesyncd_timezone_res.changed | bool
+
+- name: restart crond to run at correct time after timezone change
+  systemd:
+    name: crond.service
+    state: restarted
+  when:
+    - __systemd_timesyncd_timezone_res.changed | bool
+    - '"crond.service" in ansible_facts.services'
