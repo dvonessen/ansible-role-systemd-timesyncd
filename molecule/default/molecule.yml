@@ -5,21 +5,21 @@ driver:
   name: docker
 platforms:
   - name: systemdtimesyncdcentos8
-    image: registry.gitlab.com/dvonessen/docker-ansible-systemd-nonroot-centos:8
+    image: registry.gitlab.com/dvonessen/docker-molecule-nonroot/centos:8-systemd
     command: /usr/lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
   - name: systemdtimesyncddebian10
-    image: registry.gitlab.com/dvonessen/docker-ansible-systemd-nonroot-debian:10
+    image: registry.gitlab.com/dvonessen/docker-molecule-nonroot/debian:10-systemd
     command: /lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
   - name: systemdtimesyncdubuntu2004
-    image: registry.gitlab.com/dvonessen/docker-ansible-systemd-nonroot-ubuntu:20.04
+    image: registry.gitlab.com/dvonessen/docker-molecule-nonroot/ubuntu:20.04-systemd
     command: /lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
