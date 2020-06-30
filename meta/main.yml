@@ -20,4 +20,6 @@ galaxy_info:
   galaxy_tags: [ntp, chrony, system, timesync, network, time]
 
 dependencies:
-  - dthielking.ansible_role_epel
+  - src: git+https://gitlab.com/dvonessen/ansible-role-epel
+    version: master
+    name: epel
