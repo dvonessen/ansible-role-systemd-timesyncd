@@ -2,7 +2,7 @@
 dependency:
   name: galaxy
   options:
-   role-file: requirements.yml
+    role-file: requirements.yml
 driver:
   name: docker
 platforms:
@@ -23,6 +23,13 @@ platforms:
   - name: systemdtimesyncdubuntu2004
     image: registry.gitlab.com/dvonessen/docker-molecule-nonroot/ubuntu:20.04-systemd
     command: /lib/systemd/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  - name: systemdtimesyncdarchlinux
+    image: registry.gitlab.com/dvonessen/docker-molecule-nonroot/archlinux:latest-systemd
+    command: /usr/lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true

@@ -1,0 +1,8 @@
+---
+systemd_timesyncd_packages:
+  - systemd
+  - tzdata
+
+systemd_timesyncd_remove_packages:
+  - ntp
+  - chrony
